@@ -8,8 +8,8 @@
 var knex = require('knex');
 const imageThumbnail = require('image-thumbnail');
 
-exports.triggerETL = (req, res) => {
-  const limit = 1000;
+exports.triggerETL = async (req, res) => {
+  const limit = 3;
 
   const db = knex({
     client: 'mssql',
@@ -39,6 +39,7 @@ exports.triggerETL = (req, res) => {
     await db('dbo.photo')
     .update(body)
     .where('RowId', photo.RowId);
+    console.log("ROW_ID", photo.RowId)
   }
 
   res.status(200).send("success");
