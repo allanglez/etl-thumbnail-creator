@@ -4,7 +4,7 @@
   "description": "Thumbnail creator for Node.js",
   "main": "index .js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node -e 'require(\"./server.js\").triggerETL()'",
     "development": "pm2 start ecosystem.config.js --no-daemon"
   },
   "author": "Edgar Allan Glez ",

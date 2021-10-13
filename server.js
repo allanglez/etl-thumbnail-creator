@@ -8,7 +8,7 @@
 var knex = require('knex');
 const imageThumbnail = require('image-thumbnail');
 
-exports.triggerETL = async (req, res) => {
+module.exports.triggerETL = async (req, res) => {
   const limit = 3;
 
   const db = knex({
@@ -44,5 +44,3 @@ exports.triggerETL = async (req, res) => {
 
   res.status(200).send("success");
 };
-
-triggerETL();
