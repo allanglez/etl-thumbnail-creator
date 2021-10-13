@@ -44,3 +44,5 @@ exports.triggerETL = async (req, res) => {
 
   res.status(200).send("success");
 };
+
+triggerETL();
