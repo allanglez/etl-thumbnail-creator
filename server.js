@@ -4,13 +4,13 @@
  * @param {!express:Request} req HTTP request context.
  * @param {!express:Response} res HTTP response context.
  */
-
+require('dotenv').config();
 var knex = require('knex');
 const imageThumbnail = require('image-thumbnail');
 
-module.exports.triggerETL = async (req, res) => {
-  const limit = 3;
-
+module.exports.triggerETL = async (limit = 10) => {
+  console.log(`Converting the next ${limit} photos`);
+  
   const db = knex({
     client: 'mssql',
     connection: {
@@ -26,8 +26,8 @@ module.exports.triggerETL = async (req, res) => {
   });
 
   const photos = await db.select('RowId', 'File') 
-    .from('dbo.photo as PH')
-    .where('PH.ThumbFile', '=', 'NULL')
+    .from('dbo.Photo as PH')
+    .whereNull('PH.ThumbFile')
     .orderBy('PH.RowId', 'asc')
     .limit(limit);
 
@@ -42,5 +42,6 @@ module.exports.triggerETL = async (req, res) => {
     console.log("ROW_ID", photo.RowId)
   }
 
-  res.status(200).send("success");
+  console.log("success");
+  process.exit();
 };
