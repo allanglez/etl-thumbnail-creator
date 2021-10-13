@@ -1,0 +1,23 @@
+{
+  "name": "thumbanil-creator",
+  "version": "1.0.0",
+  "description": "Thumbnail creator for Node.js",
+  "main": "index .js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "development": "pm2 start ecosystem.config.js --no-daemon"
+  },
+  "author": "Edgar Allan Glez ",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "image-thumbnail": "^1.0.13",
+    "knex": "^0.20.13",
+    "mssql": "^6.3.1",
+    "multer": "^1.4.2",
+    "sharp": "^0.28.3",
+    "dotenv": "^8.2.0"
+  }
+}
